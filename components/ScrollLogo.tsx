@@ -6,7 +6,7 @@ const HEADER_SIZE = 96;  // px – logo size when docked in header (matches foot
 const SCROLL_DISTANCE = 300; // px of scroll over which the transition happens
 
 function getHeroSize() {
-  return typeof window !== 'undefined' && window.innerWidth < 768 ? 140 : 320;
+  return typeof window !== 'undefined' && window.innerWidth < 768 ? 130 : 320;
 }
 
 const ScrollLogo: React.FC = () => {
