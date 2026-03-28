@@ -30,7 +30,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
           <NavLink to="/" className="group">
-            <img src={LOGO} alt="Bonjour Bébé - Infant Massage" className="h-20 md:h-24 w-auto" />
+            <img src={LOGO} alt="Bonjour Bébé - Infant Massage" className="h-48 md:h-56 w-auto" />
           </NavLink>
 
           {/* Desktop Menu */}
@@ -101,7 +101,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-1 md:col-span-2">
-              <img src={LOGO} alt="Bonjour Bébé" className="h-24 w-auto mb-4" />
+              <img src={LOGO} alt="Bonjour Bébé" className="h-48 w-auto mb-4" />
               <p className="text-taupe/80 mb-6 max-w-md leading-relaxed">
                 Nurturing touch, French calm, and deep connection. Supporting Bellevue and Greater Seattle families in their early parenting journey with gentleness and expertise.
               </p>
