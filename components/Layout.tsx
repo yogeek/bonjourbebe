@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, Instagram, Facebook, Mail } from 'lucide-react';
-import { NAV_ITEMS } from '../constants';
+import { NAV_ITEMS, LOGO } from '../constants';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,9 +30,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
           <NavLink to="/" className="group">
-            <h1 className="font-serif text-2xl md:text-3xl font-bold text-taupe tracking-tight group-hover:text-pacific transition-colors">
-              Bonjour <span className="font-script text-3xl md:text-4xl text-pacific ml-1">Bébé</span>
-            </h1>
+            <img src={LOGO} alt="Bonjour Bébé - Infant Massage" className="h-12 md:h-14 w-auto" />
           </NavLink>
 
           {/* Desktop Menu */}
@@ -103,14 +101,14 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-1 md:col-span-2">
-              <h2 className="font-serif text-2xl font-bold mb-4">Bonjour Bébé</h2>
+              <img src={LOGO} alt="Bonjour Bébé" className="h-16 w-auto mb-4" />
               <p className="text-taupe/80 mb-6 max-w-md leading-relaxed">
                 Nurturing touch, French calm, and deep connection. Supporting Bellevue and Greater Seattle families in their early parenting journey with gentleness and expertise.
               </p>
               <div className="flex space-x-4">
                 <a href="https://www.instagram.com/bonjourbebe.infantmassage/" target="_blank" rel="noopener noreferrer" className="text-pacific hover:text-taupe transition-colors"><Instagram size={20} /></a>
                 <a href="https://www.facebook.com/share/1KD5eGJCFu/" target="_blank" rel="noopener noreferrer" className="text-pacific hover:text-taupe transition-colors"><Facebook size={20} /></a>
-                <a href="mailto:bonjour@bonjourbebe.com" className="text-pacific hover:text-taupe transition-colors"><Mail size={20} /></a>
+                <a href="mailto:marion.infantmassage@gmail.com" className="text-pacific hover:text-taupe transition-colors"><Mail size={20} /></a>
               </div>
             </div>
             <div>

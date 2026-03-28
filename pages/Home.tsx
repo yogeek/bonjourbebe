@@ -33,13 +33,12 @@ const Home: React.FC = () => {
         </div>
 
         {/* Hero image picker */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg">
-          <button onClick={() => setHeroIndex((heroIndex - 1 + HERO_OPTIONS.length) % HERO_OPTIONS.length)} className="text-taupe hover:text-pacific transition-colors">
-            <ChevronLeft size={20} />
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 opacity-30 hover:opacity-80 transition-opacity">
+          <button onClick={() => setHeroIndex((heroIndex - 1 + HERO_OPTIONS.length) % HERO_OPTIONS.length)} className="text-taupe/60 hover:text-pacific transition-colors">
+            <ChevronLeft size={16} />
           </button>
-          <span className="text-sm font-medium text-taupe min-w-[120px] text-center">{HERO_OPTIONS[heroIndex].label}</span>
-          <button onClick={() => setHeroIndex((heroIndex + 1) % HERO_OPTIONS.length)} className="text-taupe hover:text-pacific transition-colors">
-            <ChevronRight size={20} />
+          <button onClick={() => setHeroIndex((heroIndex + 1) % HERO_OPTIONS.length)} className="text-taupe/60 hover:text-pacific transition-colors">
+            <ChevronRight size={16} />
           </button>
         </div>
 
@@ -49,7 +48,7 @@ const Home: React.FC = () => {
             <span className="italic font-light text-pacific">Deep Connection.</span>
           </h1>
           <p className="text-lg md:text-xl text-taupe/90 mb-8 font-light tracking-wide max-w-2xl mx-auto">
-            Bonjour Bébé brings the art of infant massage to the Greater Seattle area.
+            Bonjour Bébé brings the art of infant massage to the Greater Seattle Area.
             Nurturing confidence and calm for you and your little one.
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
@@ -95,7 +94,7 @@ const Home: React.FC = () => {
           <div className="w-full md:w-1/2 text-center md:text-left">
             <h2 className="font-serif text-4xl text-taupe mb-6">A Touch of French Warmth</h2>
             <p className="text-lg leading-relaxed mb-6 text-taupe/80">
-              Originally from France, I lived in Southeast Asia for 10 years before moving to the US in 2024. Now based in Bellevue, WA, I am a Certified Educator of Infant Massage, dedicated to empowering new parents.
+              Originally from France, I lived in Southeast Asia for 10 years, including Singapore, before my family moved to the US in 2024. Now based in Bellevue, WA, I am a Certified Educator of Infant Massage, dedicated to empowering new parents.
             </p>
             <p className="text-lg leading-relaxed mb-8 text-taupe/80">
               My philosophy blends the gentle, time-honored traditions of French childcare with modern, evidence-based practices. Together, we create a sanctuary of calm for you and your bébé.
@@ -173,12 +172,12 @@ const Home: React.FC = () => {
           <div className="w-full md:w-1/2">
              <h2 className="font-serif text-4xl mb-6">Serving Bellevue & Seattle Families</h2>
              <p className="text-lg text-taupe/80 mb-8">
-               Based in Bellevue, WA, offering classes and travel-to-home appointments across the Greater Seattle area.
+               Based in Bellevue, WA, offering classes and travel-to-home appointments across the Greater Seattle Area.
              </p>
              <div className="flex items-center gap-2 text-pacific font-medium mb-8">
                 <MapPin /> Bellevue, WA
              </div>
-             <Link to="/contact" className="bg-taupe text-white px-8 py-4 rounded-full shadow hover:bg-pacific transition-colors text-lg">
+             <Link to="/contact" className="bg-pacific text-white px-8 py-4 rounded-full shadow-lg hover:bg-pacific/90 transition-colors text-lg font-serif italic">
                Reserve Your First Session
              </Link>
           </div>

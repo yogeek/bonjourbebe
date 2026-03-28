@@ -15,7 +15,7 @@ const Contact: React.FC = () => {
     const message = data.get('message') || '';
     const subject = `Bonjour Bébé inquiry from ${name}`;
     const body = `Name: ${name}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`;
-    window.location.href = `mailto:bonjour@bonjourbebe.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:marion.infantmassage@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -38,7 +38,7 @@ const Contact: React.FC = () => {
                         <Mail className="text-pacific mt-1" />
                         <div>
                            <p className="font-medium">Email</p>
-                           <a href="mailto:bonjour@bonjourbebe.com" className="text-cream/70 hover:text-cream transition-colors">bonjour@bonjourbebe.com</a>
+                           <a href="mailto:marion.infantmassage@gmail.com" className="text-cream/70 hover:text-cream transition-colors">marion.infantmassage@gmail.com</a>
                         </div>
                      </div>
                      <div className="flex items-start gap-4">
@@ -113,7 +113,7 @@ const Contact: React.FC = () => {
                   </div>
 
                   <textarea name="message" rows={4} placeholder="Tell me about your baby and any questions you have..." className="w-full bg-cream/30 border border-sage rounded-lg px-4 py-3 focus:outline-none focus:border-pacific"></textarea>
-                  <button type="submit" className="bg-taupe text-white px-8 py-3 rounded-full hover:bg-pacific transition-colors w-full md:w-auto">
+                  <button type="submit" className="bg-pacific text-white px-8 py-3 rounded-full hover:bg-pacific/90 transition-colors w-full md:w-auto font-serif italic">
                     Send Message
                   </button>
                </form>
