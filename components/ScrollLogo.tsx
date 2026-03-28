@@ -2,13 +2,17 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { LOGO } from '../constants';
 
-const HERO_SIZE = 320;   // px – logo size when centered in hero
 const HEADER_SIZE = 96;  // px – logo size when docked in header (matches footer h-24)
 const SCROLL_DISTANCE = 300; // px of scroll over which the transition happens
+
+function getHeroSize() {
+  return typeof window !== 'undefined' && window.innerWidth < 768 ? 180 : 320;
+}
 
 const ScrollLogo: React.FC = () => {
   const [progress, setProgress] = useState(0);
   const [headerPos, setHeaderPos] = useState({ x: 24, y: 12 });
+  const [heroSize, setHeroSize] = useState(getHeroSize);
   const placeholderRef = useRef<HTMLDivElement | null>(null);
 
   const updateHeaderPos = useCallback(() => {
@@ -25,20 +29,24 @@ const ScrollLogo: React.FC = () => {
       updateHeaderPos();
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', updateHeaderPos);
+    const handleResize = () => {
+      setHeroSize(getHeroSize());
+      updateHeaderPos();
+    };
+    window.addEventListener('resize', handleResize);
     handleScroll();
     // Measure after initial render
     requestAnimationFrame(updateHeaderPos);
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', updateHeaderPos);
+      window.removeEventListener('resize', handleResize);
     };
   }, [updateHeaderPos]);
 
   const ep = easeInOutCubic(progress);
 
   // Interpolate size
-  const size = HERO_SIZE - (HERO_SIZE - HEADER_SIZE) * ep;
+  const size = heroSize - (heroSize - HEADER_SIZE) * ep;
 
   // Hero center: middle of viewport horizontally, 18% from top
   const heroCx = typeof window !== 'undefined' ? window.innerWidth / 2 : 500;
