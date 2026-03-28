@@ -51,7 +51,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               </NavLink>
             ))}
             <NavLink
-              to="/booking"
+              to="/contact"
               className="bg-pacific text-white px-5 py-2 rounded-full font-serif italic hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg text-sm"
             >
               Book Now
@@ -84,7 +84,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               </NavLink>
             ))}
             <NavLink
-              to="/booking"
+              to="/contact"
               className="bg-pacific text-white px-8 py-3 rounded-full font-serif italic text-lg shadow-sm"
             >
               Book a Session
@@ -105,12 +105,12 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <div className="col-span-1 md:col-span-2">
               <h2 className="font-serif text-2xl font-bold mb-4">Bonjour Bébé</h2>
               <p className="text-taupe/80 mb-6 max-w-md leading-relaxed">
-                Nurturing touch, French calm, and deep connection. Supporting Seattle families in their early parenting journey with gentleness and expertise.
+                Nurturing touch, French calm, and deep connection. Supporting Bellevue and Greater Seattle families in their early parenting journey with gentleness and expertise.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-pacific hover:text-taupe transition-colors"><Instagram size={20} /></a>
-                <a href="#" className="text-pacific hover:text-taupe transition-colors"><Facebook size={20} /></a>
-                <a href="#" className="text-pacific hover:text-taupe transition-colors"><Mail size={20} /></a>
+                <a href="https://www.instagram.com/bonjourbebe.infantmassage/" target="_blank" rel="noopener noreferrer" className="text-pacific hover:text-taupe transition-colors"><Instagram size={20} /></a>
+                <a href="https://www.facebook.com/share/1KD5eGJCFu/" target="_blank" rel="noopener noreferrer" className="text-pacific hover:text-taupe transition-colors"><Facebook size={20} /></a>
+                <a href="mailto:bonjour@bonjourbebe.com" className="text-pacific hover:text-taupe transition-colors"><Mail size={20} /></a>
               </div>
             </div>
             <div>
@@ -118,20 +118,19 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <ul className="space-y-2 text-sm text-taupe/80">
                 <li><NavLink to="/about" className="hover:text-pacific">About Me</NavLink></li>
                 <li><NavLink to="/services" className="hover:text-pacific">Services</NavLink></li>
-                <li><NavLink to="/blog" className="hover:text-pacific">Resources</NavLink></li>
                 <li><NavLink to="/contact" className="hover:text-pacific">Contact</NavLink></li>
               </ul>
             </div>
             <div>
               <h3 className="font-serif font-semibold text-lg mb-4">Location</h3>
-              <p className="text-sm text-taupe/80 mb-2">Seattle, Washington</p>
+              <p className="text-sm text-taupe/80 mb-2">Bellevue, Washington</p>
               <p className="text-sm text-taupe/80 mb-2">Serving Greater Seattle Area</p>
               <p className="text-sm text-taupe/80 italic mt-4">Sessions available in English & French</p>
             </div>
           </div>
           <div className="border-t border-taupe/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-taupe/60">
             <p>&copy; {new Date().getFullYear()} Bonjour Bébé. All rights reserved.</p>
-            <p className="mt-2 md:mt-0">Created with love for Seattle families.</p>
+            <p className="mt-2 md:mt-0">Created with love for Bellevue & Seattle families.</p>
           </div>
         </div>
       </footer>

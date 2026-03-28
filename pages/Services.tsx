@@ -57,7 +57,7 @@ const Services: React.FC = () => {
                        <p className="text-xs uppercase tracking-wider text-taupe/60">Investment</p>
                        <p className="font-serif text-2xl text-pacific">{service.price}</p>
                      </div>
-                     <Link to="/booking" className="bg-taupe text-white px-6 py-2 rounded-full hover:bg-pacific transition-colors">
+                     <Link to="/contact" className="bg-taupe text-white px-6 py-2 rounded-full hover:bg-pacific transition-colors">
                        Book
                      </Link>
                   </div>
@@ -71,7 +71,7 @@ const Services: React.FC = () => {
            <h3 className="font-serif text-2xl mb-4">Home Travel Add-on</h3>
            <p className="mb-6 text-taupe/80 max-w-2xl mx-auto">
              For your ultimate comfort, I can bring the session to your living room. <br/>
-             <span className="italic text-sm text-taupe/60">Available within Seattle city limits. Additional travel fee of $30 applies.</span>
+             <span className="italic text-sm text-taupe/60">Available in the Bellevue and Greater Seattle area. Additional travel fee of $30 applies.</span>
            </p>
         </div>
 
