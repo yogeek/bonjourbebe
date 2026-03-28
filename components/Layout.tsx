@@ -47,7 +47,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           transition: 'all 0.3s',
         }}
       >
-        <div className="container mx-auto px-6 flex justify-between items-center">
+        <div className="max-w-[1400px] mx-auto px-6 flex justify-between items-center">
           {isHome ? (
             <ScrollLogo />
           ) : (

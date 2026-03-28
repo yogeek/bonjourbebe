@@ -5,20 +5,30 @@ import { LOGO } from '../constants';
 const HEADER_SIZE = 96;  // px – logo size when docked in header (matches footer h-24)
 const SCROLL_DISTANCE = 300; // px of scroll over which the transition happens
 
-function getHeroSize() {
-  return typeof window !== 'undefined' && window.innerWidth < 768 ? 130 : 320;
-}
+const MAX_HERO_SIZE = 320;
+const MIN_HERO_SIZE = 80;
+const LOGO_TOP_MARGIN = 16; // px margin above the logo
+const LOGO_HEADING_GAP = 12; // px gap between logo bottom and heading top
 
 const ScrollLogo: React.FC = () => {
   const [progress, setProgress] = useState(0);
   const [headerPos, setHeaderPos] = useState({ x: 24, y: 12 });
-  const [heroSize, setHeroSize] = useState(getHeroSize);
+  const [heroSize, setHeroSize] = useState(MAX_HERO_SIZE);
+  const [headingTop, setHeadingTop] = useState(300);
   const placeholderRef = useRef<HTMLDivElement | null>(null);
 
-  const updateHeaderPos = useCallback(() => {
+  const measure = useCallback(() => {
     if (placeholderRef.current) {
       const rect = placeholderRef.current.getBoundingClientRect();
       setHeaderPos({ x: rect.left, y: rect.top });
+    }
+    const h1 = document.querySelector('h1');
+    if (h1) {
+      const h1Top = h1.getBoundingClientRect().top + window.scrollY;
+      setHeadingTop(h1Top);
+      // Logo must fit between top margin and heading, clamped to [MIN, MAX]
+      const available = h1Top - LOGO_TOP_MARGIN - LOGO_HEADING_GAP;
+      setHeroSize(Math.round(Math.min(MAX_HERO_SIZE, Math.max(MIN_HERO_SIZE, available))));
     }
   }, []);
 
@@ -26,39 +36,42 @@ const ScrollLogo: React.FC = () => {
     const handleScroll = () => {
       const p = Math.min(1, Math.max(0, window.scrollY / SCROLL_DISTANCE));
       setProgress(p);
-      updateHeaderPos();
+      measure();
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
-    const handleResize = () => {
-      setHeroSize(getHeroSize());
-      updateHeaderPos();
-    };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', measure);
     handleScroll();
-    // Measure after initial render
-    requestAnimationFrame(updateHeaderPos);
+    requestAnimationFrame(measure);
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', measure);
     };
-  }, [updateHeaderPos]);
+  }, [measure]);
 
   const ep = easeInOutCubic(progress);
 
-  // Interpolate size
-  const size = heroSize - (heroSize - HEADER_SIZE) * ep;
+  // Width-based progress: at narrow widths (768–1024px), shift logo toward header position
+  // Below 768px the mobile menu kicks in so no overlap issue
+  const vw = typeof window !== 'undefined' ? window.innerWidth : 1280;
+  const wp = vw >= 1440 ? 0 : vw < 768 ? 0 : Math.min(1, (1440 - vw) / (1440 - 768));
 
-  // Hero center: middle of viewport horizontally, 18% from top
-  const heroCx = typeof window !== 'undefined' ? window.innerWidth / 2 : 500;
-  const heroCy = typeof window !== 'undefined' ? window.innerHeight * 0.18 : 140;
+  // Combine scroll and width progress (take the max effect)
+  const combined = Math.max(ep, wp);
+
+  // Interpolate size
+  const size = heroSize - (heroSize - HEADER_SIZE) * combined;
+
+  // Hero center: middle of viewport horizontally, bottom edge sits above the heading
+  const heroCx = typeof window !== 'undefined' ? vw / 2 : 500;
+  const heroCy = headingTop - LOGO_HEADING_GAP - heroSize / 2;
 
   // Header center: center of the placeholder element
   const headerCx = headerPos.x + HEADER_SIZE / 2;
   const headerCy = headerPos.y + HEADER_SIZE / 2;
 
   // Interpolate center position, then offset to top-left
-  const cx = heroCx + (headerCx - heroCx) * ep;
-  const cy = heroCy + (headerCy - heroCy) * ep;
+  const cx = heroCx + (headerCx - heroCx) * combined;
+  const cy = heroCy + (headerCy - heroCy) * combined;
   const x = cx - size / 2;
   const y = cy - size / 2;
 
