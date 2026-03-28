@@ -2,9 +2,9 @@ import { Heart, Users, Baby } from 'lucide-react';
 import { Service, NavItem } from './types';
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: 'About', path: '/about' },
-  { label: 'Services', path: '/services' },
-  { label: 'Contact', path: '/contact' },
+  { labelKey: 'nav.about', path: '/about' },
+  { labelKey: 'nav.services', path: '/services' },
+  { labelKey: 'nav.contact', path: '/contact' },
 ];
 
 const BASE = import.meta.env.BASE_URL;
@@ -15,9 +15,9 @@ export const FOUNDER_IMAGE_PRO = `${BASE}marion-portrait.png`;
 export const SERVICES: Service[] = [
   {
     id: 'private',
-    title: 'Private Sessions',
-    description: 'One-on-one personalized instruction in the comfort of your home or my studio. Tailored to your baby’s specific needs.',
-    benefits: ['Personalized routine', 'Address specific issues like colic', 'Flexible timing'],
+    titleKey: 'serviceItems.privateTitle',
+    descKey: 'serviceItems.privateDesc',
+    benefitKeys: ['serviceItems.privateBenefit1', 'serviceItems.privateBenefit2', 'serviceItems.privateBenefit3'],
     duration: '60 mins',
     price: '$120',
     icon: Baby,
@@ -25,9 +25,9 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'workshop',
-    title: 'Parent–Baby Workshops',
-    description: 'Learn the art of infant massage alongside other parents. A wonderful way to socialize and learn.',
-    benefits: ['Meet other parents', 'Structured learning', 'Group support'],
+    titleKey: 'serviceItems.workshopTitle',
+    descKey: 'serviceItems.workshopDesc',
+    benefitKeys: ['serviceItems.workshopBenefit1', 'serviceItems.workshopBenefit2', 'serviceItems.workshopBenefit3'],
     duration: '4 weeks (1hr/week)',
     price: '$200',
     icon: Users,
@@ -35,9 +35,9 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'prenatal',
-    title: 'Prenatal Consultations',
-    description: 'Prepare for your baby’s arrival by learning the basics of nurturing touch and bonding before birth.',
-    benefits: ['Confidence building', 'Early bonding techniques', 'Postpartum preparation'],
+    titleKey: 'serviceItems.prenatalTitle',
+    descKey: 'serviceItems.prenatalDesc',
+    benefitKeys: ['serviceItems.prenatalBenefit1', 'serviceItems.prenatalBenefit2', 'serviceItems.prenatalBenefit3'],
     duration: '90 mins',
     price: '$150',
     icon: Heart,

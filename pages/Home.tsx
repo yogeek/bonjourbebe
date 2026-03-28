@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Star, MapPin, ChevronRight, ChevronLeft } from 'lucide-react';
 import { SERVICES, FOUNDER_IMAGE_FUN, FOUNDER_IMAGE_PRO } from '../constants';
 
 const HERO_OPTIONS = [
-  { src: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&q=80&w=1920', alt: 'Newborn baby feet close-up', label: 'A - Newborn feet' },
-  { src: 'https://images.unsplash.com/photo-1493894473891-10fc1e5dbd22?auto=format&fit=crop&q=80&w=1920', alt: 'Pregnant belly with heart hands', label: 'B - Heart hands' },
-  { src: 'https://images.unsplash.com/photo-1560305850-d90e0af2ff18?auto=format&fit=crop&q=80&w=1920', alt: 'Woman kissing baby', label: 'C - Kissing baby' },
-  { src: 'https://images.unsplash.com/photo-1582486225644-aeacf6aa0b1b?auto=format&fit=crop&q=80&w=1920', alt: 'Person holding baby feet', label: 'D - Feet in hands' },
-  { src: 'https://images.unsplash.com/photo-1535571393765-ea44927160be?auto=format&fit=crop&q=80&w=1920', alt: 'Woman holding baby', label: 'E - Mother & baby' },
-  { src: 'https://images.unsplash.com/photo-1534768654272-e97681c3a2c7?auto=format&fit=crop&q=80&w=1920', alt: 'Holding baby hand', label: 'F - Baby hand' },
+  { src: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&q=80&w=1920', alt: 'Newborn baby feet close-up' },
+  { src: 'https://images.unsplash.com/photo-1493894473891-10fc1e5dbd22?auto=format&fit=crop&q=80&w=1920', alt: 'Pregnant belly with heart hands' },
+  { src: 'https://images.unsplash.com/photo-1560305850-d90e0af2ff18?auto=format&fit=crop&q=80&w=1920', alt: 'Woman kissing baby' },
+  { src: 'https://images.unsplash.com/photo-1582486225644-aeacf6aa0b1b?auto=format&fit=crop&q=80&w=1920', alt: 'Person holding baby feet' },
+  { src: 'https://images.unsplash.com/photo-1535571393765-ea44927160be?auto=format&fit=crop&q=80&w=1920', alt: 'Woman holding baby' },
+  { src: 'https://images.unsplash.com/photo-1534768654272-e97681c3a2c7?auto=format&fit=crop&q=80&w=1920', alt: 'Holding baby hand' },
 ];
 
 const Home: React.FC = () => {
+  const { t } = useTranslation();
   const [showFun, setShowFun] = useState(false);
   const [heroIndex, setHeroIndex] = useState(0);
 
@@ -44,25 +46,24 @@ const Home: React.FC = () => {
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-16">
           <h1 className="font-serif text-5xl md:text-7xl text-taupe mb-6 tracking-tight">
-            Gentle Touch. <br />
-            <span className="italic font-light text-pacific">Deep Connection.</span>
+            {t('home.heroTitle1')} <br />
+            <span className="italic font-light text-pacific">{t('home.heroTitle2')}</span>
           </h1>
           <p className="text-lg md:text-xl text-taupe/90 mb-8 font-light tracking-wide max-w-2xl mx-auto">
-            Bonjour Bébé brings the art of infant massage to the Greater Seattle Area.
-            Nurturing confidence and calm for you and your little one.
+            {t('home.heroSubtitle')}
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <Link
               to="/contact"
               className="bg-pacific text-white px-8 py-4 rounded-full font-serif italic text-lg shadow-lg hover:bg-pacific/90 transition-transform hover:-translate-y-1"
             >
-              Book a Session
+              {t('home.bookSession')}
             </Link>
             <Link
               to="/about"
               className="bg-white/80 backdrop-blur-sm text-taupe border border-white px-8 py-4 rounded-full font-medium text-lg hover:bg-white transition-colors"
             >
-              Learn More
+              {t('home.learnMore')}
             </Link>
           </div>
         </div>
@@ -83,24 +84,24 @@ const Home: React.FC = () => {
                 />
                 <div className="absolute inset-0 flex items-end justify-center pb-8 opacity-0 group-hover:opacity-100 transition-opacity">
                   <span className="bg-white/80 backdrop-blur-sm text-taupe text-xs px-3 py-1 rounded-full">
-                    {showFun ? 'See the pro side' : 'See the fun side'}
+                    {showFun ? t('home.seeProSide') : t('home.seeFunSide')}
                   </span>
                 </div>
             </div>
             <div className="absolute -bottom-6 -right-6 bg-blush rounded-full p-8 shadow-lg hidden md:block">
-               <p className="font-script text-3xl text-taupe -rotate-6">Bonjour!</p>
+               <p className="font-script text-3xl text-taupe -rotate-6">{t('home.bonjour')}</p>
             </div>
           </div>
           <div className="w-full md:w-1/2 text-center md:text-left">
-            <h2 className="font-serif text-4xl text-taupe mb-6">A Touch of French Warmth</h2>
+            <h2 className="font-serif text-4xl text-taupe mb-6">{t('home.founderTitle')}</h2>
             <p className="text-lg leading-relaxed mb-6 text-taupe/80">
-              Originally from France, I lived in Southeast Asia for 10 years, including Singapore, before my family moved to the US in 2024. Now based in Bellevue, WA, I am a Certified Educator of Infant Massage, dedicated to empowering new parents.
+              {t('home.founderBio1')}
             </p>
             <p className="text-lg leading-relaxed mb-8 text-taupe/80">
-              My philosophy blends the gentle, time-honored traditions of French childcare with modern, evidence-based practices. Together, we create a sanctuary of calm for you and your bébé.
+              {t('home.founderBio2')}
             </p>
             <Link to="/about" className="text-pacific font-medium hover:text-taupe inline-flex items-center gap-2 border-b border-pacific pb-1">
-              Read my story <ChevronRight size={16} />
+              {t('home.readMyStory')} <ChevronRight size={16} />
             </Link>
           </div>
         </div>
@@ -109,28 +110,28 @@ const Home: React.FC = () => {
       {/* Benefits Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="font-serif text-3xl md:text-4xl text-taupe mb-16">Why Infant Massage?</h2>
+          <h2 className="font-serif text-3xl md:text-4xl text-taupe mb-16">{t('home.whyTitle')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="p-6">
               <div className="bg-blush/30 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-pacific">
                 <Star size={32} />
               </div>
-              <h3 className="font-serif text-xl mb-3">Deep Bonding</h3>
-              <p className="text-taupe/70">Strengthen the emotional connection through the language of touch, releasing oxytocin for both parent and baby.</p>
+              <h3 className="font-serif text-xl mb-3">{t('home.benefitBondingTitle')}</h3>
+              <p className="text-taupe/70">{t('home.benefitBondingDesc')}</p>
             </div>
             <div className="p-6">
               <div className="bg-sage/30 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-pacific">
                 <MapPin size={32} />
               </div>
-              <h3 className="font-serif text-xl mb-3">Relief & Relaxation</h3>
-              <p className="text-taupe/70">Alleviate common discomforts like gas, colic, and teething pain while promoting better sleep patterns.</p>
+              <h3 className="font-serif text-xl mb-3">{t('home.benefitReliefTitle')}</h3>
+              <p className="text-taupe/70">{t('home.benefitReliefDesc')}</p>
             </div>
             <div className="p-6">
               <div className="bg-cream w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-pacific shadow-inner">
                 <Star size={32} />
               </div>
-              <h3 className="font-serif text-xl mb-3">Parental Confidence</h3>
-              <p className="text-taupe/70">Learn to read your baby's cues effectively, feeling more empowered and capable in your parenting journey.</p>
+              <h3 className="font-serif text-xl mb-3">{t('home.benefitConfidenceTitle')}</h3>
+              <p className="text-taupe/70">{t('home.benefitConfidenceDesc')}</p>
             </div>
           </div>
         </div>
@@ -140,27 +141,27 @@ const Home: React.FC = () => {
       <section className="py-20 md:py-28 bg-sage/20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl text-taupe mb-4">Our Services</h2>
-            <p className="text-taupe/70 max-w-xl mx-auto">Offering private sessions, group workshops, and prenatal consultations tailored to your needs.</p>
+            <h2 className="font-serif text-4xl text-taupe mb-4">{t('home.servicesTitle')}</h2>
+            <p className="text-taupe/70 max-w-xl mx-auto">{t('home.servicesSubtitle')}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {SERVICES.map((service) => (
               <div key={service.id} className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow text-center group">
                 <div className="w-full h-48 mb-6 overflow-hidden rounded-xl">
-                   <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                   <img src={service.image} alt={t(service.titleKey)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
-                <h3 className="font-serif text-2xl mb-2">{service.title}</h3>
-                <p className="text-taupe/70 mb-6 text-sm">{service.description}</p>
+                <h3 className="font-serif text-2xl mb-2">{t(service.titleKey)}</h3>
+                <p className="text-taupe/70 mb-6 text-sm">{t(service.descKey)}</p>
                 <Link to="/services" className="text-pacific font-medium text-sm uppercase tracking-wider hover:text-taupe">
-                  View Details
+                  {t('home.viewDetails')}
                 </Link>
               </div>
             ))}
           </div>
           <div className="text-center mt-12">
              <Link to="/services" className="inline-block border border-taupe text-taupe px-8 py-3 rounded-full hover:bg-taupe hover:text-white transition-colors">
-               See Full Service Menu
+               {t('home.seeFullMenu')}
              </Link>
           </div>
         </div>
@@ -170,15 +171,15 @@ const Home: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
           <div className="w-full md:w-1/2">
-             <h2 className="font-serif text-4xl mb-6">Serving Bellevue & Seattle Families</h2>
+             <h2 className="font-serif text-4xl mb-6">{t('home.locationTitle')}</h2>
              <p className="text-lg text-taupe/80 mb-8">
-               Based in Bellevue, WA, offering classes and travel-to-home appointments across the Greater Seattle Area.
+               {t('home.locationDesc')}
              </p>
              <div className="flex items-center gap-2 text-pacific font-medium mb-8">
-                <MapPin /> Bellevue, WA
+                <MapPin /> {t('home.bellevueWA')}
              </div>
              <Link to="/contact" className="bg-pacific text-white px-8 py-4 rounded-full shadow-lg hover:bg-pacific/90 transition-colors text-lg font-serif italic">
-               Reserve Your First Session
+               {t('home.reserveFirst')}
              </Link>
           </div>
           <div className="w-full md:w-1/2 h-80 bg-sage rounded-2xl overflow-hidden relative">

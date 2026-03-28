@@ -2,9 +2,9 @@ import { LucideIcon } from 'lucide-react';
 
 export interface Service {
   id: string;
-  title: string;
-  description: string;
-  benefits: string[];
+  titleKey: string;
+  descKey: string;
+  benefitKeys: string[];
   duration: string;
   price: string;
   icon: LucideIcon;
@@ -12,6 +12,6 @@ export interface Service {
 }
 
 export interface NavItem {
-  label: string;
+  labelKey: string;
   path: string;
 }

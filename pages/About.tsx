@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 import { Heart, CheckCircle } from 'lucide-react';
 import { FOUNDER_IMAGE_FUN, FOUNDER_IMAGE_PRO } from '../constants';
 
@@ -16,6 +17,7 @@ const ElfsightInstagram: React.FC = () => {
 };
 
 const About: React.FC = () => {
+  const { t } = useTranslation();
   const [showFun, setShowFun] = useState(false);
 
   return (
@@ -24,8 +26,8 @@ const About: React.FC = () => {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h1 className="font-serif text-5xl text-taupe mb-4">My Story</h1>
-            <p className="text-xl text-pacific font-light italic">French softness meets Pacific Northwest serenity.</p>
+            <h1 className="font-serif text-5xl text-taupe mb-4">{t('about.title')}</h1>
+            <p className="text-xl text-pacific font-light italic">{t('about.subtitle')}</p>
           </div>
 
           {/* Main Content */}
@@ -38,20 +40,18 @@ const About: React.FC = () => {
                 />
                 <div className="absolute inset-0 flex items-end justify-center pb-4 opacity-0 group-hover:opacity-100 transition-opacity">
                   <span className="bg-white/80 backdrop-blur-sm text-taupe text-xs px-3 py-1 rounded-full">
-                    {showFun ? 'See the pro side' : 'See the fun side'}
+                    {showFun ? t('about.seeProSide') : t('about.seeFunSide')}
                   </span>
                 </div>
              </div>
              <div className="w-full md:w-1/2 space-y-6 text-lg text-taupe/80 leading-relaxed">
                 <p>
-                  <span className="font-serif text-3xl text-pacific mr-2">Bonjour,</span>
-                  I am Marion Malbec, a mom of two young boys and a Certified Educator of Infant Massage (CEIM). Originally from France, I lived in Southeast Asia for 10 years, including Singapore, before my family moved to the US in 2024.
+                  <span className="font-serif text-3xl text-pacific mr-2">{t('about.greeting')}</span>
+                  {t('about.bio1')}
                 </p>
+                <p>{t('about.bio2')}</p>
                 <p>
-                  My infant massage journey began in 2019, when I learned to massage my eldest son. What started as a beautiful bonding moment quickly became a passion! After taking IAIM classes, I knew I wanted to learn more and eventually became a CEIM so I could share this practice with other families.
-                </p>
-                <p>
-                  I put my career as an architect on pause to follow my heart and launch <span className="font-serif italic">Bonjour Bébé</span>. It's an exciting and meaningful step, allowing me to build a community in this new chapter of life. I believe touch is our first language, and my mission is to give you the tools to speak it fluently, with confidence and joy.
+                  <Trans i18nKey="about.bio3" components={{ italic: <span className="font-serif italic" /> }} />
                 </p>
              </div>
           </div>
@@ -61,28 +61,28 @@ const About: React.FC = () => {
              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div>
                    <h2 className="font-serif text-2xl mb-6 flex items-center gap-2">
-                     <CheckCircle className="text-pacific" /> Credentials
+                     <CheckCircle className="text-pacific" /> {t('about.credentialsTitle')}
                    </h2>
                    <ul className="space-y-4 text-taupe/80">
                       <li className="flex items-start gap-3">
                         <span className="h-2 w-2 rounded-full bg-pacific mt-2"></span>
-                        Certified Educator of Infant Massage (CEIM) by the International Association of Infant Massage (IAIM) and Infant Massage USA (IMUSA).
+                        {t('about.credential1')}
                       </li>
                       <li className="flex items-start gap-3">
                         <span className="h-2 w-2 rounded-full bg-pacific mt-2"></span>
-                        Trained in pediatric First Aid & CPR.
+                        {t('about.credential2')}
                       </li>
                    </ul>
                 </div>
                 <div>
                    <h2 className="font-serif text-2xl mb-6 flex items-center gap-2">
-                     <Heart className="text-pacific" /> Philosophy
+                     <Heart className="text-pacific" /> {t('about.philosophyTitle')}
                    </h2>
                    <p className="text-taupe/80 italic">
-                     "We do not massage the baby; we massage <span className="font-bold not-italic">with</span> the baby."
+                     <Trans i18nKey="about.philosophyQuote" components={{ bold: <span className="font-bold not-italic" /> }} />
                    </p>
                    <p className="mt-4 text-taupe/80">
-                     My approach is strictly baby-led. We listen to cues, respect boundaries, and ensure the experience is pleasurable for both of you. It is not about technique perfection, but connection depth.
+                     {t('about.philosophyDesc')}
                    </p>
                 </div>
              </div>
