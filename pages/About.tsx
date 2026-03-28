@@ -63,15 +63,13 @@ const About: React.FC = () => {
                    <h2 className="font-serif text-2xl mb-6 flex items-center gap-2">
                      <CheckCircle className="text-pacific" /> {t('about.credentialsTitle')}
                    </h2>
-                   <ul className="space-y-4 text-taupe/80">
-                      <li className="flex items-start gap-3">
-                        <span className="h-2 w-2 rounded-full bg-pacific mt-2"></span>
-                        {t('about.credential1')}
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <span className="h-2 w-2 rounded-full bg-pacific mt-2"></span>
-                        {t('about.credential2')}
-                      </li>
+                   <ul className="space-y-4 text-taupe/80 list-none">
+                      {['about.credential1', 'about.credential2'].map((key) => (
+                        <li key={key} className="flex items-start gap-3">
+                          <span className="inline-block h-2.5 w-2.5 min-h-2.5 min-w-2.5 rounded-full bg-pacific mt-1.5 flex-shrink-0"></span>
+                          <span>{t(key)}</span>
+                        </li>
+                      ))}
                    </ul>
                 </div>
                 <div>
