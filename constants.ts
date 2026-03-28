@@ -10,7 +10,7 @@ export const NAV_ITEMS: NavItem[] = [
 const BASE = import.meta.env.BASE_URL;
 export const LOGO = `${BASE}logo.svg`;
 export const FOUNDER_IMAGE_FUN = `${BASE}marion-fun.jpg`;
-export const FOUNDER_IMAGE_PRO = `${BASE}marion-pro.jpg`;
+export const FOUNDER_IMAGE_PRO = `${BASE}marion-portrait.png`;
 
 export const SERVICES: Service[] = [
   {
