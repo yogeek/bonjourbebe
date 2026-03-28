@@ -7,8 +7,9 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Contact', path: '/contact' },
 ];
 
-export const FOUNDER_IMAGE_FUN = "/marion-fun.jpg";
-export const FOUNDER_IMAGE_PRO = "/marion-pro.jpg";
+const BASE = import.meta.env.BASE_URL;
+export const FOUNDER_IMAGE_FUN = `${BASE}marion-fun.jpg`;
+export const FOUNDER_IMAGE_PRO = `${BASE}marion-pro.jpg`;
 
 export const SERVICES: Service[] = [
   {
@@ -29,7 +30,7 @@ export const SERVICES: Service[] = [
     duration: '4 weeks (1hr/week)',
     price: '$200',
     icon: Users,
-    image: '/workshop-materials.jpg',
+    image: `${BASE}workshop-materials.jpg`,
   },
   {
     id: 'prenatal',
