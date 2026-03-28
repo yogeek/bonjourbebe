@@ -2,17 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, Instagram, Facebook, Mail } from 'lucide-react';
 import { NAV_ITEMS, LOGO } from '../constants';
+import ScrollLogo from './ScrollLogo';
+
+const SCROLL_DISTANCE = 300; // must match ScrollLogo
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setScrollProgress(Math.min(1, Math.max(0, window.scrollY / SCROLL_DISTANCE)));
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -20,18 +24,34 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
+  const isHome = location.pathname === '/' || location.pathname === '';
+
   return (
     <div className="flex flex-col min-h-screen font-sans text-taupe">
       {/* Navigation */}
       <nav
-        className={`fixed w-full z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-cream/95 shadow-sm py-2' : 'bg-transparent py-6'
-        }`}
+        className="fixed w-full z-50"
+        style={isHome ? {
+          backgroundColor: `rgba(255, 248, 243, ${scrollProgress * 0.95})`,
+          boxShadow: scrollProgress > 0.5 ? `0 1px 2px rgba(0,0,0,${(scrollProgress - 0.5) * 0.1})` : 'none',
+          paddingTop: `${24 - 16 * scrollProgress}px`,
+          paddingBottom: `${24 - 16 * scrollProgress}px`,
+        } : {
+          backgroundColor: scrollProgress > 0.05 ? 'rgba(255, 248, 243, 0.95)' : 'transparent',
+          boxShadow: scrollProgress > 0.05 ? '0 1px 2px rgba(0,0,0,0.05)' : 'none',
+          paddingTop: scrollProgress > 0.05 ? '8px' : '24px',
+          paddingBottom: scrollProgress > 0.05 ? '8px' : '24px',
+          transition: 'all 0.3s',
+        }}
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
-          <NavLink to="/" className="group">
-            <img src={LOGO} alt="Bonjour Bébé - Infant Massage" className="h-24 md:h-28 w-auto" />
-          </NavLink>
+          {isHome ? (
+            <ScrollLogo />
+          ) : (
+            <NavLink to="/" className="group">
+              <img src={LOGO} alt="Bonjour Bébé - Infant Massage" className="h-20 md:h-20 w-auto" />
+            </NavLink>
+          )}
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 items-center">
